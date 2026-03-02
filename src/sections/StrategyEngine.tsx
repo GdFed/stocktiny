@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { buyStrategies, sellStrategies } from '@/data/strategyData';
+import { useStrategies } from '@/hooks/api/useStrategies';
 import { ArrowUpCircle, ArrowDownCircle, CheckCircle2, AlertCircle, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -139,6 +139,11 @@ export function StrategyEngine() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
+  // 数据来源：接口请求，失败时自动回退到本地 mock
+  const { data: strategies } = useStrategies();
+  const buyList = strategies?.buy ?? [];
+  const sellList = strategies?.sell ?? [];
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -176,7 +181,7 @@ export function StrategyEngine() {
           </div>
 
           <div className="space-y-3">
-            {buyStrategies.map((strategy, index) => (
+            {buyList.map((strategy, index) => (
               <StrategyCard
                 key={strategy.level}
                 level={strategy.level}
@@ -212,7 +217,7 @@ export function StrategyEngine() {
           </div>
 
           <div className="space-y-3">
-            {sellStrategies.map((strategy, index) => (
+            {sellList.map((strategy, index) => (
               <StrategyCard
                 key={strategy.level}
                 level={strategy.level}

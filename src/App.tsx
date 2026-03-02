@@ -9,7 +9,6 @@ import { RiskControl } from '@/sections/RiskControl';
 import { AIAnalysisCenter } from '@/sections/AIAnalysisCenter';
 import { LadderBoard } from '@/sections/LadderBoard';
 import type { EmotionPhase } from '@/types';
-import { mockMarketData } from '@/data/strategyData';
 import { Toaster } from '@/components/ui/sonner';
 
 function App() {
@@ -51,8 +50,6 @@ function App() {
       {/* 导航栏 */}
       <Navbar
         currentPhase={currentPhase}
-        limitUpCount={mockMarketData.limitUpCount}
-        limitDownCount={mockMarketData.limitDownCount}
       />
 
       {/* 主内容区 */}

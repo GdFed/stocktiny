@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { mockAIAnalysis, emotionPhases } from '@/data/strategyData';
+import { useAIAnalysis } from '@/hooks/api/useAIAnalysis';
+import { useEmotionPhases } from '@/hooks/api/useEmotionPhases';
 import { Brain, Sparkles, Target, TrendingUp, AlertCircle, Zap, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -7,10 +8,12 @@ import { Progress } from '@/components/ui/progress';
 
 export function AIAnalysisCenter() {
   const [isVisible, setIsVisible] = useState(false);
-  const [isAnalyzing, setIsAnalyzing] = useState(false);
-  const [analysis, setAnalysis] = useState(mockAIAnalysis);
   const [typedText, setTypedText] = useState('');
   const sectionRef = useRef<HTMLElement>(null);
+
+  // 数据来源：接口请求，失败时自动回退到本地 mock
+  const { data: ai, isLoading, refetch } = useAIAnalysis();
+  const { data: phases } = useEmotionPhases();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -31,27 +34,21 @@ export function AIAnalysisCenter() {
 
   // 打字机效果
   useEffect(() => {
-    if (analysis.status === 'completed' && typedText.length < analysis.suggestion.length) {
+    if (ai?.status === 'completed' && ai?.suggestion && typedText.length < ai.suggestion.length) {
       const timer = setTimeout(() => {
-        setTypedText(analysis.suggestion.slice(0, typedText.length + 1));
+        setTypedText(ai.suggestion.slice(0, typedText.length + 1));
       }, 30);
       return () => clearTimeout(timer);
     }
-  }, [analysis.suggestion, typedText, analysis.status]);
+  }, [ai?.suggestion, typedText, ai?.status]);
 
   // 重新分析
-  const handleReanalyze = () => {
-    setIsAnalyzing(true);
+  const handleReanalyze = async () => {
     setTypedText('');
-    
-    // 模拟分析过程
-    setTimeout(() => {
-      setIsAnalyzing(false);
-      setAnalysis({ ...mockAIAnalysis });
-    }, 2000);
+    await refetch();
   };
 
-  const phaseData = emotionPhases.find(p => p.id === analysis.emotionPhase);
+  const phaseData = phases?.find(p => p.id === (ai?.emotionPhase ?? 'ferment'));
 
   return (
     <section ref={sectionRef} className="py-8">
@@ -82,15 +79,15 @@ export function AIAnalysisCenter() {
             variant="outline"
             size="sm"
             onClick={handleReanalyze}
-            disabled={isAnalyzing}
+            disabled={isLoading}
             className="gap-1.5 border-[#a855f7]/30 hover:bg-[#a855f7]/10"
           >
             <Sparkles className="w-3.5 h-3.5" />
-            {isAnalyzing ? '分析中...' : '重新分析'}
+            {isLoading ? '分析中...' : '重新分析'}
           </Button>
         </div>
 
-        {isAnalyzing ? (
+        {isLoading ? (
           // 分析中状态
           <div className="relative py-12 text-center">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#a855f7]/20 mb-4">
@@ -131,7 +128,7 @@ export function AIAnalysisCenter() {
                     >
                       {phaseData?.name}
                     </span>
-                    第{analysis.emotionDay}天
+                    第{ai?.emotionDay ?? 0}天
                   </p>
                 </div>
                 <Badge
@@ -143,7 +140,7 @@ export function AIAnalysisCenter() {
                     backgroundColor: `${phaseData?.color}15`
                   }}
                 >
-                  置信度 {analysis.confidence}%
+                  置信度 {ai?.confidence ?? 0}%
                 </Badge>
               </div>
 
@@ -155,7 +152,7 @@ export function AIAnalysisCenter() {
                 <div>
                   <p className="text-xs text-white/50 mb-1">主线推荐</p>
                   <div className="flex gap-2">
-                    {analysis.recommendedThemes.map((theme, idx) => (
+                    {(ai?.recommendedThemes ?? []).map((theme, idx) => (
                       <span
                         key={idx}
                         className="px-2 py-0.5 rounded text-sm bg-[#ff2d2d]/20 text-[#ff2d2d]"
@@ -176,16 +173,16 @@ export function AIAnalysisCenter() {
                   <p className="text-xs text-white/50 mb-1">目标股</p>
                   <div className="flex items-center gap-3">
                     <span className="text-lg font-bold text-white">
-                      {analysis.targetStock.name}
+                      {ai?.targetStock?.name ?? '--'}
                     </span>
                     <span className="text-sm text-white/50 font-mono">
-                      {analysis.targetStock.code}
+                      {ai?.targetStock?.code ?? '--'}
                     </span>
                     <span className="px-2 py-0.5 rounded text-xs bg-[#a855f7]/20 text-[#a855f7]">
-                      {analysis.targetStock.boards}连板
+                      {ai?.targetStock?.boards ?? 0}连板
                     </span>
                     <span className="px-2 py-0.5 rounded text-xs bg-white/10 text-white/70">
-                      {analysis.targetStock.type}
+                      {ai?.targetStock?.type ?? '--'}
                     </span>
                   </div>
                 </div>

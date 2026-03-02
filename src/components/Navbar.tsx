@@ -1,19 +1,23 @@
 import { useState, useEffect } from 'react';
 import { TrendingUp, TrendingDown, Activity, Zap } from 'lucide-react';
-import { emotionPhases } from '@/data/strategyData';
+import { useEmotionPhases } from '@/hooks/api/useEmotionPhases';
+import { useMarketData } from '@/hooks/api/useMarketData';
 import type { EmotionPhase } from '@/types';
 
 interface NavbarProps {
   currentPhase: EmotionPhase;
-  limitUpCount: number;
-  limitDownCount: number;
 }
 
-export function Navbar({ currentPhase, limitUpCount, limitDownCount }: NavbarProps) {
+export function Navbar({ currentPhase }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [flashUp, setFlashUp] = useState(false);
   const [flashDown, setFlashDown] = useState(false);
 
+  // 数据来源：接口请求，失败时自动回退到本地 mock
+  const { data: phases } = useEmotionPhases();
+  const phaseList = phases ?? [];
+  const { data: market } = useMarketData();
+  
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -37,7 +41,7 @@ export function Navbar({ currentPhase, limitUpCount, limitDownCount }: NavbarPro
     return () => clearInterval(interval);
   }, []);
 
-  const phaseData = emotionPhases.find(p => p.id === currentPhase);
+  const phaseData = phaseList.find(p => p.id === currentPhase);
 
   return (
     <nav
@@ -82,7 +86,7 @@ export function Navbar({ currentPhase, limitUpCount, limitDownCount }: NavbarPro
             <TrendingUp className="w-4 h-4 text-[#ff2d2d]" />
             <span className="text-sm text-white/70">涨停:</span>
             <span className="text-sm font-bold text-[#ff2d2d] font-mono">
-              {limitUpCount}家
+              {(market?.limitUpCount ?? 0)}家
             </span>
           </div>
 
@@ -95,7 +99,7 @@ export function Navbar({ currentPhase, limitUpCount, limitDownCount }: NavbarPro
             <TrendingDown className="w-4 h-4 text-[#00c800]" />
             <span className="text-sm text-white/70">跌停:</span>
             <span className="text-sm font-bold text-[#00c800] font-mono">
-              {limitDownCount}家
+              {(market?.limitDownCount ?? 0)}家
             </span>
           </div>
         </div>

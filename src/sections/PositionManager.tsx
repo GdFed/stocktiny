@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { emotionPhases } from '@/data/strategyData';
+import { useEmotionPhases } from '@/hooks/api/useEmotionPhases';
 import type { EmotionPhase } from '@/types';
 import { Layers, AlertTriangle } from 'lucide-react';
 import { Slider } from '@/components/ui/slider';
@@ -30,7 +30,9 @@ export function PositionManager({ currentPhase }: PositionManagerProps) {
     return () => observer.disconnect();
   }, []);
 
-  const phaseData = emotionPhases.find(p => p.id === currentPhase);
+  const { data: phases } = useEmotionPhases();
+  
+  const phaseData = phases?.find(p => p.id === currentPhase);
   
   // 解析建议仓位范围
   const getSuggestedRange = (positionStr: string): [number, number] => {

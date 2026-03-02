@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { mockFourDimensionData } from '@/data/strategyData';
+import { useFourDimensionData } from '@/hooks/api/useFourDimensionData';
 import { TrendingUp, History, BarChart3, Wallet, ChevronDown, ChevronUp } from 'lucide-react';
 // Progress component imported for future use
 
@@ -119,7 +119,40 @@ export function FourDimensionSystem() {
     return () => observer.disconnect();
   }, []);
 
-  const { theme, character, technical, fund, totalScore } = mockFourDimensionData;
+  // 数据来源：接口请求，失败时自动回退到本地 mock（见 useFourDimensionData）
+  const { data: fd } = useFourDimensionData();
+
+  // 未获取到数据时的占位
+  const theme = fd?.theme ?? {
+    score: 0,
+    mainTheme: '--',
+    limitUpCount: 0,
+    ladderStructure: '--',
+    midCapStarted: false,
+  };
+  const character = fd?.character ?? {
+    score: 0,
+    yearlyLimitUpCount: 0,
+    maxConsecutiveBoards: 0,
+    repairRate: 0,
+    avgPremium: 0,
+    marketCap: '--',
+  };
+  const technical = fd?.technical ?? {
+    score: 0,
+    sealRatio: 0,
+    sealTime: '--',
+    turnoverRate: 0,
+    pattern: '--',
+  };
+  const fund = fd?.fund ?? {
+    score: 0,
+    dragonTigerList: '--',
+    institutionNetBuy: 0,
+    seatQuality: '--',
+    relayExpectation: '--',
+  };
+  const totalScore = fd?.totalScore ?? 0;
 
   return (
     <section ref={sectionRef} className="py-8">

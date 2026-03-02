@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { riskRules } from '@/data/strategyData';
+import { useRiskRules } from '@/hooks/api/useRiskRules';
 import { Shield, XCircle, AlertTriangle, TrendingDown, Ban } from 'lucide-react';
 // Progress component imported for future use
 
@@ -12,7 +12,8 @@ interface RiskLimit {
 
 export function RiskControl() {
   const [isVisible, setIsVisible] = useState(false);
-  const [rules] = useState(riskRules);
+  const { data: rules } = useRiskRules();
+  const rulesList = rules ?? [];
   const sectionRef = useRef<HTMLElement>(null);
 
   const riskLimits: RiskLimit[] = [
@@ -72,7 +73,7 @@ export function RiskControl() {
 
           {/* 禁止规则列表 */}
           <div className="space-y-2">
-            {rules.map((rule, index) => (
+            {rulesList.map((rule, index) => (
               <div
                 key={rule.id}
                 className={`flex items-center gap-3 p-3 rounded-lg border transition-all duration-500 ${

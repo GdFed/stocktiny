@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { mockLadderData } from '@/data/strategyData';
+import { useLadderData } from '@/hooks/api/useLadderData';
 import { Trophy, Flame, ChevronRight } from 'lucide-react';
 
 export function LadderBoard() {
@@ -23,6 +23,10 @@ export function LadderBoard() {
 
     return () => observer.disconnect();
   }, []);
+
+  // 数据来源：接口请求，失败时自动回退到本地 mock
+  const { data: ladder } = useLadderData();
+  const ladderList = ladder ?? [];
 
   // 获取主题颜色
   const getThemeColor = (theme: string): string => {
@@ -64,14 +68,14 @@ export function LadderBoard() {
             <Flame className="w-4 h-4 text-[#ff2d2d]" />
             <span className="text-sm text-white/70">最高</span>
             <span className="text-lg font-bold text-[#ff2d2d] font-mono">
-              {mockLadderData[0]?.level || 0}连板
+              {ladderList[0]?.level || 0}连板
             </span>
           </div>
         </div>
 
         {/* 天梯 */}
         <div className="space-y-3">
-          {mockLadderData.map((levelData, levelIndex) => (
+          {ladderList.map((levelData, levelIndex) => (
             <div
               key={levelData.level}
               className={`flex items-center gap-4 transition-all duration-500 ${

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { emotionPhases, mockMarketData } from '@/data/strategyData';
+import { useMarketData } from '@/hooks/api/useMarketData';
+import { useEmotionPhases } from '@/hooks/api/useEmotionPhases';
 import type { EmotionPhase } from '@/types';
 import { Info, TrendingUp, TrendingDown, AlertCircle, Activity } from 'lucide-react';
 import {
@@ -18,6 +19,11 @@ export function EmotionCycleDashboard({ currentPhase }: EmotionCycleDashboardPro
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
+  // 数据来源：接口请求，失败时自动回退到本地 mock
+  const { data: market } = useMarketData();
+  const { data: phases } = useEmotionPhases();
+  const phaseList = phases ?? [];
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -35,7 +41,7 @@ export function EmotionCycleDashboard({ currentPhase }: EmotionCycleDashboardPro
     return () => observer.disconnect();
   }, []);
 
-  const activePhaseData = emotionPhases.find(p => p.id === activePhase);
+  const activePhaseData = phaseList.find(p => p.id === activePhase);
 
   return (
     <section
@@ -76,7 +82,7 @@ export function EmotionCycleDashboard({ currentPhase }: EmotionCycleDashboardPro
               
               {/* 阶段节点 */}
               <div className="relative flex justify-between items-center">
-                {emotionPhases.map((phase, index) => {
+                {phaseList.map((phase, index) => {
                   const isActive = phase.id === activePhase;
                   const isCurrent = phase.id === currentPhase;
                   
@@ -142,7 +148,7 @@ export function EmotionCycleDashboard({ currentPhase }: EmotionCycleDashboardPro
                   <span className="text-xs text-white/50">涨停数</span>
                 </div>
                 <p className="text-2xl font-bold text-[#ff2d2d] font-mono">
-                  {mockMarketData.limitUpCount}
+                  {market?.limitUpCount ?? 0}
                 </p>
               </div>
               
@@ -152,7 +158,7 @@ export function EmotionCycleDashboard({ currentPhase }: EmotionCycleDashboardPro
                   <span className="text-xs text-white/50">跌停数</span>
                 </div>
                 <p className="text-2xl font-bold text-[#00c800] font-mono">
-                  {mockMarketData.limitDownCount}
+                  {market?.limitDownCount ?? 0}
                 </p>
               </div>
               
@@ -162,7 +168,7 @@ export function EmotionCycleDashboard({ currentPhase }: EmotionCycleDashboardPro
                   <span className="text-xs text-white/50">炸板率</span>
                 </div>
                 <p className="text-2xl font-bold text-[#ffb800] font-mono">
-                  {mockMarketData.brokenBoardRate}%
+                  {(market?.brokenBoardRate ?? 0)}%
                 </p>
               </div>
               
@@ -172,7 +178,7 @@ export function EmotionCycleDashboard({ currentPhase }: EmotionCycleDashboardPro
                   <span className="text-xs text-white/50">溢价率</span>
                 </div>
                 <p className="text-2xl font-bold text-[#00d4ff] font-mono">
-                  +{mockMarketData.premiumRate}%
+                  +{market?.premiumRate ?? 0}%
                 </p>
               </div>
             </div>

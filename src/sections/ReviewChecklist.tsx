@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
-import { checklistSteps } from '@/data/strategyData';
+import { useChecklist } from '@/hooks/api/useChecklist';
 import { CheckCircle2, Circle, Clock, ChevronRight, RotateCcw, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 
 export function ReviewChecklist() {
   const [isVisible, setIsVisible] = useState(false);
-  const [steps, setSteps] = useState(checklistSteps);
+  const { data: checklist } = useChecklist();
+  const [steps, setSteps] = useState(checklist ?? []);
   const [expandedStep, setExpandedStep] = useState<number | null>(1);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -26,6 +27,11 @@ export function ReviewChecklist() {
 
     return () => observer.disconnect();
   }, []);
+  
+  // 同步后端/回退数据到本地可编辑状态
+  useEffect(() => {
+    if (checklist) setSteps(checklist);
+  }, [checklist]);
 
   // 计算完成进度
   const totalItems = steps.reduce((acc, step) => acc + step.items.length, 0);
@@ -33,7 +39,7 @@ export function ReviewChecklist() {
     (acc, step) => acc + step.items.filter(item => item.completed).length,
     0
   );
-  const progress = Math.round((completedItems / totalItems) * 100);
+  const progress = totalItems ? Math.round((completedItems / totalItems) * 100) : 0;
 
   // 切换任务完成状态
   const toggleItem = (stepId: number, itemId: string) => {
