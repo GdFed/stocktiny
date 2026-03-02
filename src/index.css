@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 270 70% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 270 70% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
+    --ring: 270 70% 60%;
+    --radius: 0.75rem;
+    
+    /* Custom Colors */
+    --rise-red: 0 100% 59%;
+    --fall-green: 120 100% 39%;
+    --warning-yellow: 45 100% 50%;
+    --ice-blue: 190 100% 50%;
+    --purple-gold: 270 70% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+  }
+  
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .text-gradient-purple {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #a855f7, #ff6b35);
+  }
+  
+  .text-gradient-red {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #ff2d2d, #ff6b35);
+  }
+  
+  .text-gradient-blue {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #00d4ff, #a855f7);
+  }
+  
+  .bg-gradient-purple {
+    background: linear-gradient(135deg, #a855f7, #ff6b35);
+  }
+  
+  .bg-gradient-card {
+    background: linear-gradient(135deg, #1a1a1a, #141414);
+  }
+  
+  .border-gradient {
+    border-image: linear-gradient(135deg, #a855f7, #ff6b35) 1;
+  }
+  
+  .glow-purple {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+  }
+  
+  .glow-red {
+    box-shadow: 0 0 20px rgba(255, 45, 45, 0.3);
+  }
+  
+  .glow-green {
+    box-shadow: 0 0 20px rgba(0, 200, 0, 0.3);
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-out infinite;
+  }
+  
+  .animate-flash-red {
+    animation: flash-red 0.5s ease-out;
+  }
+  
+  .animate-flash-green {
+    animation: flash-green 0.5s ease-out;
+  }
+  
+  .animate-typing {
+    animation: typing 3s steps(40, end);
+  }
+  
+  .animate-blink {
+    animation: blink 1s step-end infinite;
+  }
+  
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.2) transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.2);
+    border-radius: 3px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,0.3);
+  }
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 20px rgba(168, 85, 247, 0);
+  }
+}
+
+@keyframes flash-red {
+  0% {
+    background-color: rgba(255, 45, 45, 0.3);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+@keyframes flash-green {
+  0% {
+    background-color: rgba(0, 200, 0, 0.3);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes count-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
