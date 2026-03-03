@@ -1,3 +1,11 @@
+# StockTiny 项目文档索引
+- 核心功能运用指南：docs/core-usage-guide.md
+- 接口与 AI 逻辑分析：docs/analysis.md
+- 前端 Hook 接口说明：src/hooks/api/README.md
+- 本地运行：npm i && npm run dev
+
+---
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

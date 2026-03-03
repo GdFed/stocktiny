@@ -1,0 +1,56 @@
+{
+  "version": "3.0",
+  "info": "Reqable Collection APIs",
+  "type": "collection",
+  "id": "4730ad5b-284d-4d17-9622-a23adcb8b693",
+  "items": [
+    {
+      "id": "67e5151a-272e-4317-b2e7-dd45548636e5",
+      "type": "api",
+      "name": "连板天梯",
+      "method": "GET",
+      "url": {
+        "base": "https://webrelease.dzh.com.cn/htmlweb/ztts/api.php",
+        "query": [
+          { "key": "service", "value": "getZttdData" },
+          { "key": "date", "value": "20260303" }
+        ]
+      },
+      "headers": [
+        { "key": "Reqable-Id", "value": "", "internal": true },
+        { "key": "Host", "value": "", "internal": true },
+        { "key": "User-Agent", "value": "", "internal": true },
+        { "key": "Connection", "value": "keep-alive", "internal": true },
+        { "key": "Accept", "value": "*/*", "internal": true },
+        {
+          "key": "Accept-Encoding",
+          "value": "gzip, deflate, br",
+          "internal": true
+        }
+      ],
+      "showInternalHeaders": false,
+      "body": { "mode": "none" },
+      "script": { "script": null, "wordWrap": true, "isEnabled": false },
+      "authorization": { "mode": "inherit" },
+      "settings": {
+        "protocol": 0,
+        "proxy": { "type": "unset", "value": "" },
+        "maxRedirect": 10,
+        "autoSave": true,
+        "autoCookie": true,
+        "autoId": true,
+        "sslVerify": true,
+        "omitEqualSign": true,
+        "urlAutocomplete": true
+      }
+    }
+  ],
+  "properties": {
+    "name": "stocktiny",
+    "query": [],
+    "headers": [],
+    "script": { "script": null, "wordWrap": true, "isEnabled": false },
+    "authorization": { "mode": "none" }
+  },
+  "revision": -1
+}
