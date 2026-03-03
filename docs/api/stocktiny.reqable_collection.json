@@ -2,12 +2,882 @@
   "version": "3.0",
   "info": "Reqable Collection APIs",
   "type": "collection",
-  "id": "4730ad5b-284d-4d17-9622-a23adcb8b693",
+  "id": "2e9e90e6-cac1-4393-9c28-016d877b3e5d",
   "items": [
     {
-      "id": "67e5151a-272e-4317-b2e7-dd45548636e5",
+      "id": "8f1bb39f-640b-4e1c-b200-e9457f318abd",
       "type": "api",
-      "name": "连板天梯",
+      "name": "[86.push2.eastmoney.com] GET /api/qt/clist/get",
+      "method": "GET",
+      "url": {
+        "base": "https://86.push2.eastmoney.com/api/qt/clist/get",
+        "query": [
+          { "key": "pn", "value": "1" },
+          { "key": "pz", "value": "20" },
+          { "key": "po", "value": "1" },
+          { "key": "np", "value": "1" },
+          { "key": "fltt", "value": "2" },
+          { "key": "invt", "value": "2" },
+          { "key": "fid", "value": "f3" },
+          {
+            "key": "fs",
+            "value": "m:0+t:6,m:0+t:13,m:0+t:80,m:1+t:2,m:1+t:23"
+          },
+          { "key": "fields", "value": "f12,f14,f2,f3,f4,f5,f6" }
+        ]
+      },
+      "headers": [{ "key": "Accept", "value": "application/json" }],
+      "showInternalHeaders": false,
+      "body": { "mode": "none" },
+      "script": { "script": null, "wordWrap": true, "isEnabled": false },
+      "authorization": { "mode": "inherit" },
+      "settings": {
+        "protocol": 0,
+        "proxy": { "type": "unset", "value": "" },
+        "maxRedirect": 10,
+        "autoSave": true,
+        "autoCookie": true,
+        "autoId": true,
+        "sslVerify": true,
+        "omitEqualSign": true,
+        "urlAutocomplete": true
+      }
+    },
+    {
+      "id": "ae18a8cb-49e2-4e86-ad10-3e279cbd27a6",
+      "type": "api",
+      "name": "[api.convertkit.com] GET /v3/subscribers",
+      "method": "GET",
+      "url": {
+        "base": "https://api.convertkit.com/v3/subscribers",
+        "query": [{ "key": "api_secret", "value": "YOUR_KIT_API_SECRET" }]
+      },
+      "headers": [{ "key": "Accept", "value": "application/json" }],
+      "showInternalHeaders": false,
+      "body": { "mode": "none" },
+      "script": { "script": null, "wordWrap": true, "isEnabled": false },
+      "authorization": { "mode": "inherit" },
+      "settings": {
+        "protocol": 0,
+        "proxy": { "type": "unset", "value": "" },
+        "maxRedirect": 10,
+        "autoSave": true,
+        "autoCookie": true,
+        "autoId": true,
+        "sslVerify": true,
+        "omitEqualSign": true,
+        "urlAutocomplete": true
+      }
+    },
+    {
+      "id": "3cdb256d-0ecb-4fcc-a458-bc4fa81c098c",
+      "type": "api",
+      "name": "[api.github.com] GET /repos/ArvinLovegood/go-stock/releases/latest",
+      "method": "GET",
+      "url": {
+        "base": "https://api.github.com/repos/ArvinLovegood/go-stock/releases/latest"
+      },
+      "headers": [{ "key": "Accept", "value": "application/vnd.github+json" }],
+      "showInternalHeaders": false,
+      "body": { "mode": "none" },
+      "script": { "script": null, "wordWrap": true, "isEnabled": false },
+      "authorization": { "mode": "inherit" },
+      "settings": {
+        "protocol": 0,
+        "proxy": { "type": "unset", "value": "" },
+        "maxRedirect": 10,
+        "autoSave": true,
+        "autoCookie": true,
+        "autoId": true,
+        "sslVerify": true,
+        "omitEqualSign": true,
+        "urlAutocomplete": true
+      }
+    },
+    {
+      "id": "445c65e8-a4be-43de-9cb7-04c84fcf85af",
+      "type": "api",
+      "name": "[datacenter-web.eastmoney.com] GET /api/data/v1/get",
+      "method": "GET",
+      "url": {
+        "base": "https://datacenter-web.eastmoney.com/api/data/v1/get",
+        "query": [
+          { "key": "reportName", "value": "RPT_FCI_PERFORMANCEE" },
+          { "key": "columns", "value": "ALL" },
+          { "key": "filter", "value": "(SECURITY_CODE%3D%22688727%22)" }
+        ]
+      },
+      "headers": [
+        { "key": "Accept", "value": "application/json" },
+        { "key": "Referer", "value": "https://data.eastmoney.com" }
+      ],
+      "showInternalHeaders": false,
+      "body": { "mode": "none" },
+      "script": { "script": null, "wordWrap": true, "isEnabled": false },
+      "authorization": { "mode": "inherit" },
+      "settings": {
+        "protocol": 0,
+        "proxy": { "type": "unset", "value": "" },
+        "maxRedirect": 10,
+        "autoSave": true,
+        "autoCookie": true,
+        "autoId": true,
+        "sslVerify": true,
+        "omitEqualSign": true,
+        "urlAutocomplete": true
+      }
+    },
+    {
+      "id": "aec028b5-872b-45a2-b215-38e216b37087",
+      "type": "api",
+      "name": "[datacenter.eastmoney.com] GET /securities/api/data/get",
+      "method": "GET",
+      "url": {
+        "base": "https://datacenter.eastmoney.com/securities/api/data/get",
+        "query": [
+          { "key": "type", "value": "RPT_F10_FINANCE_MAINFINADATA" },
+          { "key": "sty", "value": "APP_F10_MAINFINADATA" },
+          { "key": "filter", "value": "(SECUCODE%3D%22000001.SZ%22)" },
+          { "key": "p", "value": "1" },
+          { "key": "ps", "value": "1" },
+          { "key": "st", "value": "REPORT_DATE" },
+          { "key": "sr", "value": "-1" }
+        ]
+      },
+      "headers": [
+        { "key": "Accept", "value": "application/json" },
+        { "key": "Referer", "value": "https://datacenter.eastmoney.com" }
+      ],
+      "showInternalHeaders": false,
+      "body": { "mode": "none" },
+      "script": { "script": null, "wordWrap": true, "isEnabled": false },
+      "authorization": { "mode": "inherit" },
+      "settings": {
+        "protocol": 0,
+        "proxy": { "type": "unset", "value": "" },
+        "maxRedirect": 10,
+        "autoSave": true,
+        "autoCookie": true,
+        "autoId": true,
+        "sslVerify": true,
+        "omitEqualSign": true,
+        "urlAutocomplete": true
+      }
+    },
+    {
+      "id": "abb10e6c-3469-4687-b338-c9386caccc12",
+      "type": "api",
+      "name": "[datacenter.eastmoney.com] GET /securities/api/data/get (RTP_F10_INDEX)",
+      "method": "GET",
+      "url": {
+        "base": "https://datacenter.eastmoney.com/securities/api/data/get",
+        "query": [
+          { "key": "type", "value": "RTP_F10_INDEX" },
+          { "key": "params", "value": "600519.SH" }
+        ]
+      },
+      "headers": [
+        { "key": "Accept", "value": "application/json" },
+        { "key": "Referer", "value": "https://datacenter.eastmoney.com" }
+      ],
+      "showInternalHeaders": false,
+      "body": { "mode": "none" },
+      "script": { "script": null, "wordWrap": true, "isEnabled": false },
+      "authorization": { "mode": "inherit" },
+      "settings": {
+        "protocol": 0,
+        "proxy": { "type": "unset", "value": "" },
+        "maxRedirect": 10,
+        "autoSave": true,
+        "autoCookie": true,
+        "autoId": true,
+        "sslVerify": true,
+        "omitEqualSign": true,
+        "urlAutocomplete": true
+      }
+    },
+    {
+      "id": "2084fb62-bbff-46a9-8290-b5088ac0fcbb",
+      "type": "api",
+      "name": "[finnhub.io] GET /api/v1/quote",
+      "method": "GET",
+      "url": {
+        "base": "https://finnhub.io/api/v1/quote",
+        "query": [
+          { "key": "symbol", "value": "AAPL" },
+          { "key": "token", "value": "YOUR_FINNHUB_KEY" }
+        ]
+      },
+      "headers": [{ "key": "Accept", "value": "application/json" }],
+      "showInternalHeaders": false,
+      "body": { "mode": "none" },
+      "script": { "script": null, "wordWrap": true, "isEnabled": false },
+      "authorization": { "mode": "inherit" },
+      "settings": {
+        "protocol": 0,
+        "proxy": { "type": "unset", "value": "" },
+        "maxRedirect": 10,
+        "autoSave": true,
+        "autoCookie": true,
+        "autoId": true,
+        "sslVerify": true,
+        "omitEqualSign": true,
+        "urlAutocomplete": true
+      }
+    },
+    {
+      "id": "2de1b125-983c-4290-b73d-eee68b89d9db",
+      "type": "api",
+      "name": "[finnhub.io] GET /api/v1/stock/profile2",
+      "method": "GET",
+      "url": {
+        "base": "https://finnhub.io/api/v1/stock/profile2",
+        "query": [
+          { "key": "symbol", "value": "AAPL" },
+          { "key": "token", "value": "YOUR_FINNHUB_KEY" }
+        ]
+      },
+      "headers": [{ "key": "Accept", "value": "application/json" }],
+      "showInternalHeaders": false,
+      "body": { "mode": "none" },
+      "script": { "script": null, "wordWrap": true, "isEnabled": false },
+      "authorization": { "mode": "inherit" },
+      "settings": {
+        "protocol": 0,
+        "proxy": { "type": "unset", "value": "" },
+        "maxRedirect": 10,
+        "autoSave": true,
+        "autoCookie": true,
+        "autoId": true,
+        "sslVerify": true,
+        "omitEqualSign": true,
+        "urlAutocomplete": true
+      }
+    },
+    {
+      "id": "cd6800aa-7e59-4ae7-9078-c33e2136b4ec",
+      "type": "api",
+      "name": "[finnhub.io] GET /api/v1/company-news",
+      "method": "GET",
+      "url": {
+        "base": "https://finnhub.io/api/v1/company-news",
+        "query": [
+          { "key": "symbol", "value": "AAPL" },
+          { "key": "from", "value": "2026-03-01" },
+          { "key": "to", "value": "2026-03-03" },
+          { "key": "token", "value": "YOUR_FINNHUB_KEY" }
+        ]
+      },
+      "headers": [{ "key": "Accept", "value": "application/json" }],
+      "showInternalHeaders": false,
+      "body": { "mode": "none" },
+      "script": { "script": null, "wordWrap": true, "isEnabled": false },
+      "authorization": { "mode": "inherit" },
+      "settings": {
+        "protocol": 0,
+        "proxy": { "type": "unset", "value": "" },
+        "maxRedirect": 10,
+        "autoSave": true,
+        "autoCookie": true,
+      "autoId": true,
+        "sslVerify": true,
+        "omitEqualSign": true,
+        "urlAutocomplete": true
+      }
+    },
+    {
+      "id": "6cb268a1-fb75-4ba3-841a-26c22583ee32",
+      "type": "api",
+      "name": "[finnhub.io] GET /api/v1/news",
+      "method": "GET",
+      "url": {
+        "base": "https://finnhub.io/api/v1/news",
+        "query": [
+          { "key": "category", "value": "general" },
+          { "key": "token", "value": "YOUR_FINNHUB_KEY" }
+        ]
+      },
+      "headers": [{ "key": "Accept", "value": "application/json" }],
+      "showInternalHeaders": false,
+      "body": { "mode": "none" },
+      "script": { "script": null, "wordWrap": true, "isEnabled": false },
+      "authorization": { "mode": "inherit" },
+      "settings": {
+        "protocol": 0,
+        "proxy": { "type": "unset", "value": "" },
+        "maxRedirect": 10,
+        "autoSave": true,
+        "autoCookie": true,
+        "autoId": true,
+        "sslVerify": true,
+        "omitEqualSign": true,
+        "urlAutocomplete": true
+      }
+    },
+    {
+      "id": "821bdfd7-a7cf-4803-8a18-1ff86d1fc8ab",
+      "type": "api",
+      "name": "[finnhub.io] GET /api/v1/search",
+      "method": "GET",
+      "url": {
+        "base": "https://finnhub.io/api/v1/search",
+        "query": [
+          { "key": "q", "value": "apple" },
+          { "key": "token", "value": "YOUR_FINNHUB_KEY" }
+        ]
+      },
+      "headers": [{ "key": "Accept", "value": "application/json" }],
+      "showInternalHeaders": false,
+      "body": { "mode": "none" },
+      "script": { "script": null, "wordWrap": true, "isEnabled": false },
+      "authorization": { "mode": "inherit" },
+      "settings": {
+        "protocol": 0,
+        "proxy": { "type": "unset", "value": "" },
+        "maxRedirect": 10,
+        "autoSave": true,
+        "autoCookie": true,
+        "autoId": true,
+        "sslVerify": true,
+        "omitEqualSign": true,
+        "urlAutocomplete": true
+      }
+    },
+    {
+      "id": "cb01809f-00f1-4190-9d3d-6a422dcdcc10",
+      "type": "api",
+      "name": "[go-stock.sparkmemory.top:16666] GET /FinancialNews/json",
+      "method": "GET",
+      "url": {
+        "base": "http://go-stock.sparkmemory.top:16666/FinancialNews/json",
+        "query": [{ "key": "since", "value": "1700000000" }]
+      },
+      "headers": [{ "key": "Accept", "value": "application/json" }],
+      "showInternalHeaders": false,
+      "body": { "mode": "none" },
+      "script": { "script": null, "wordWrap": true, "isEnabled": false },
+      "authorization": { "mode": "inherit" },
+      "settings": {
+        "protocol": 0,
+        "proxy": { "type": "unset", "value": "" },
+        "maxRedirect": 10,
+        "autoSave": true,
+        "autoCookie": true,
+        "autoId": true,
+        "sslVerify": true,
+        "omitEqualSign": true,
+        "urlAutocomplete": true
+      }
+    },
+    {
+      "id": "7774cb56-b6d2-4192-9a2c-523bcd4e4453",
+      "type": "api",
+      "name": "[hq.sinajs.cn] GET /?list=",
+      "method": "GET",
+      "url": {
+        "base": "https://hq.sinajs.cn/",
+        "query": [{ "key": "list", "value": "sh600519" }]
+      },
+      "headers": [
+        { "key": "Accept", "value": "*/*" },
+        { "key": "Referer", "value": "https://finance.sina.com.cn" }
+      ],
+      "showInternalHeaders": false,
+      "body": { "mode": "none" },
+      "script": { "script": null, "wordWrap": true, "isEnabled": false },
+      "authorization": { "mode": "inherit" },
+      "settings": {
+        "protocol": 0,
+        "proxy": { "type": "unset", "value": "" },
+        "maxRedirect": 10,
+        "autoSave": true,
+        "autoCookie": true,
+        "autoId": true,
+        "sslVerify": true,
+        "omitEqualSign": true,
+        "urlAutocomplete": true
+      }
+    },
+    {
+      "id": "4dc8cb65-5a0e-4893-a99a-c81b2ef14260",
+      "type": "api",
+      "name": "[hq.sinajs.cn] GET /?list=",
+      "method": "GET",
+      "url": {
+        "base": "https://hq.sinajs.cn/",
+        "query": [{ "key": "list", "value": "sh600519" }]
+      },
+      "headers": [
+        { "key": "Accept", "value": "*/*" },
+        { "key": "Referer", "value": "https://finance.sina.com.cn" }
+      ],
+      "showInternalHeaders": false,
+      "body": { "mode": "none" },
+      "script": { "script": null, "wordWrap": true, "isEnabled": false },
+      "authorization": { "mode": "inherit" },
+      "settings": {
+        "protocol": 0,
+        "proxy": { "type": "unset", "value": "" },
+        "maxRedirect": 10,
+        "autoSave": true,
+        "autoCookie": true,
+        "autoId": true,
+        "sslVerify": true,
+        "omitEqualSign": true,
+        "urlAutocomplete": true
+      }
+    },
+    {
+      "id": "cebb2d66-0a9b-44fa-92da-0bc1d018d964",
+      "type": "api",
+      "name": "[proxy.finance.qq.com] GET /ifzqgtimg/appstock/app/newfqkline/get",
+      "method": "GET",
+      "url": {
+        "base": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get",
+        "query": [{ "key": "param", "value": "sz000001,day,,300" }]
+      },
+      "headers": [
+        { "key": "Accept", "value": "application/json, text/plain, */*" }
+      ],
+      "showInternalHeaders": false,
+      "body": { "mode": "none" },
+      "script": { "script": null, "wordWrap": true, "isEnabled": false },
+      "authorization": { "mode": "inherit" },
+      "settings": {
+        "protocol": 0,
+        "proxy": { "type": "unset", "value": "" },
+        "maxRedirect": 10,
+        "autoSave": true,
+        "autoCookie": true,
+        "autoId": true,
+        "sslVerify": true,
+        "omitEqualSign": true,
+        "urlAutocomplete": true
+      }
+    },
+    {
+      "id": "571bd5d6-1284-4178-98c0-bdfa9adbf889",
+      "type": "api",
+      "name": "[push2.eastmoney.com] GET /api/qt/stock/get",
+      "method": "GET",
+      "url": {
+        "base": "https://push2.eastmoney.com/api/qt/stock/get",
+        "query": [
+          { "key": "secid", "value": "1.600519" },
+          { "key": "fields", "value": "f58,f57,f43,f47,f169" }
+        ]
+      },
+      "headers": [
+        { "key": "Accept", "value": "application/json" },
+        { "key": "Referer", "value": "https://quote.eastmoney.com" }
+      ],
+      "showInternalHeaders": false,
+      "body": { "mode": "none" },
+      "script": { "script": null, "wordWrap": true, "isEnabled": false },
+      "authorization": { "mode": "inherit" },
+      "settings": {
+        "protocol": 0,
+        "proxy": { "type": "unset", "value": "" },
+        "maxRedirect": 10,
+        "autoSave": true,
+        "autoCookie": true,
+        "autoId": true,
+        "sslVerify": true,
+        "omitEqualSign": true,
+        "urlAutocomplete": true
+      }
+    },
+    {
+      "id": "af41c70c-b46f-4bf3-a5c3-7ca89f7131dd",
+      "type": "api",
+      "name": "[push2.eastmoney.com] GET /api/qt/stock/get (fields selection)",
+      "method": "GET",
+      "url": {
+        "base": "https://push2.eastmoney.com/api/qt/stock/get",
+        "query": [
+          { "key": "secid", "value": "1.600519" },
+          {
+            "key": "fields",
+            "value": "f43,f44,f45,f46,f47,f48,f50,f57,f58,f71,f84,f85,f92,f116,f117,f127,f128,f129,f137,f140,f162,f168,f178"
+          }
+        ]
+      },
+      "headers": [
+        { "key": "Accept", "value": "application/json" },
+        { "key": "Referer", "value": "https://quote.eastmoney.com" }
+      ],
+      "showInternalHeaders": false,
+      "body": { "mode": "none" },
+      "script": { "script": null, "wordWrap": true, "isEnabled": false },
+      "authorization": { "mode": "inherit" },
+      "settings": {
+        "protocol": 0,
+        "proxy": { "type": "unset", "value": "" },
+        "maxRedirect": 10,
+        "autoSave": true,
+        "autoCookie": true,
+        "autoId": true,
+        "sslVerify": true,
+        "omitEqualSign": true,
+        "urlAutocomplete": true
+      }
+    },
+    {
+      "id": "0e940b44-29a8-4e1d-bcdd-9d8ee5729b72",
+      "type": "api",
+      "name": "[push2delay.eastmoney.com] GET /api/qt/ulist.np/get",
+      "method": "GET",
+      "url": {
+        "base": "https://push2delay.eastmoney.com/api/qt/ulist.np/get",
+        "query": [
+          { "key": "secids", "value": "1.600519,0.000001" },
+          { "key": "fields", "value": "f2,f3,f12,f13,f14,f18" }
+        ]
+      },
+      "headers": [
+        { "key": "Accept", "value": "application/json" },
+        { "key": "Referer", "value": "https://quote.eastmoney.com" }
+      ],
+      "showInternalHeaders": false,
+      "body": { "mode": "none" },
+      "script": { "script": null, "wordWrap": true, "isEnabled": false },
+      "authorization": { "mode": "inherit" },
+      "settings": {
+        "protocol": 0,
+        "proxy": { "type": "unset", "value": "" },
+        "maxRedirect": 10,
+        "autoSave": true,
+        "autoCookie": true,
+        "autoId": true,
+        "sslVerify": true,
+        "omitEqualSign": true,
+        "urlAutocomplete": true
+      }
+    },
+    {
+      "id": "243927e8-312c-4a11-a54f-ae736808e08b",
+      "type": "api",
+      "name": "[push2his.eastmoney.com] GET /api/qt/stock/trends2/get",
+      "method": "GET",
+      "url": {
+        "base": "https://push2his.eastmoney.com/api/qt/stock/trends2/get",
+        "query": [
+          { "key": "secid", "value": "1.600519" },
+          { "key": "ndays", "value": "1" },
+          {
+            "key": "fields1",
+            "value": "f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,f14"
+          },
+          { "key": "fields2", "value": "f51,f53,f56,f58" }
+        ]
+      },
+      "headers": [
+        { "key": "Accept", "value": "application/json" },
+        { "key": "Referer", "value": "https://quote.eastmoney.com" }
+      ],
+      "showInternalHeaders": false,
+      "body": { "mode": "none" },
+      "script": { "script": null, "wordWrap": true, "isEnabled": false },
+      "authorization": { "mode": "inherit" },
+      "settings": {
+        "protocol": 0,
+        "proxy": { "type": "unset", "value": "" },
+        "maxRedirect": 10,
+        "autoSave": true,
+        "autoCookie": true,
+        "autoId": true,
+        "sslVerify": true,
+        "omitEqualSign": true,
+        "urlAutocomplete": true
+      }
+    },
+    {
+      "id": "2c315789-0c66-4c81-bdcf-59c421505608",
+      "type": "api",
+      "name": "[push2his.eastmoney.com] GET /api/qt/stock/kline/get",
+      "method": "GET",
+      "url": {
+        "base": "https://push2his.eastmoney.com/api/qt/stock/kline/get",
+        "query": [
+          { "key": "secid", "value": "1.600519" },
+          { "key": "klt", "value": "101" },
+          { "key": "fqt", "value": "1" },
+          { "key": "lmt", "value": "280" }
+        ]
+      },
+      "headers": [
+        { "key": "Accept", "value": "application/json" },
+        { "key": "Referer", "value": "https://quote.eastmoney.com" }
+      ],
+      "showInternalHeaders": false,
+      "body": { "mode": "none" },
+      "script": { "script": null, "wordWrap": true, "isEnabled": false },
+      "authorization": { "mode": "inherit" },
+      "settings": {
+        "protocol": 0,
+        "proxy": { "type": "unset", "value": "" },
+        "maxRedirect": 10,
+        "autoSave": true,
+        "autoCookie": true,
+        "autoId": true,
+        "sslVerify": true,
+        "omitEqualSign": true,
+        "urlAutocomplete": true
+      }
+    },
+    {
+      "id": "5b505b98-2e1a-433d-a01c-4196051f8ede",
+      "type": "api",
+      "name": "[push2his.eastmoney.com] GET /api/qt/stock/kline/get",
+      "method": "GET",
+      "url": {
+        "base": "https://push2his.eastmoney.com/api/qt/stock/kline/get",
+        "query": [
+          { "key": "secid", "value": "1.600519" },
+          { "key": "klt", "value": "101" },
+          { "key": "lmt", "value": "120" }
+        ]
+      },
+      "headers": [
+        { "key": "Accept", "value": "application/json" },
+        { "key": "Referer", "value": "https://quote.eastmoney.com" }
+      ],
+      "showInternalHeaders": false,
+      "body": { "mode": "none" },
+      "script": { "script": null, "wordWrap": true, "isEnabled": false },
+      "authorization": { "mode": "inherit" },
+      "settings": {
+        "protocol": 0,
+        "proxy": { "type": "unset", "value": "" },
+        "maxRedirect": 10,
+        "autoSave": true,
+        "autoCookie": true,
+        "autoId": true,
+        "sslVerify": true,
+        "omitEqualSign": true,
+        "urlAutocomplete": true
+      }
+    },
+    {
+      "id": "bda11f97-15ca-4536-83a2-dd3e41319357",
+      "type": "api",
+      "name": "[push2his.eastmoney.com] GET /api/qt/stock/kline/get",
+      "method": "GET",
+      "url": {
+        "base": "https://push2his.eastmoney.com/api/qt/stock/kline/get",
+        "query": [
+          { "key": "secid", "value": "1.600519" },
+          { "key": "klt", "value": "101" },
+          { "key": "fqt", "value": "1" },
+          { "key": "lmt", "value": "400" }
+        ]
+      },
+      "headers": [
+        { "key": "Accept", "value": "application/json" },
+        { "key": "Referer", "value": "https://quote.eastmoney.com" }
+      ],
+      "showInternalHeaders": false,
+      "body": { "mode": "none" },
+      "script": { "script": null, "wordWrap": true, "isEnabled": false },
+      "authorization": { "mode": "inherit" },
+      "settings": {
+        "protocol": 0,
+        "proxy": { "type": "unset", "value": "" },
+        "maxRedirect": 10,
+        "autoSave": true,
+        "autoCookie": true,
+        "autoId": true,
+        "sslVerify": true,
+        "omitEqualSign": true,
+        "urlAutocomplete": true
+      }
+    },
+    {
+      "id": "06d5c352-5e0c-4164-9bb3-8ecdc65c16f5",
+      "type": "api",
+      "name": "[quotes.sina.cn] GET /cn/api/openapi.php/CN_MarketDataService.getKLineData",
+      "method": "GET",
+      "url": {
+        "base": "https://quotes.sina.cn/cn/api/openapi.php/CN_MarketDataService.getKLineData",
+        "query": [
+          { "key": "symbol", "value": "sh600519" },
+          { "key": "scale", "value": "240" },
+          { "key": "datalen", "value": "300" }
+        ]
+      },
+      "headers": [
+        { "key": "Accept", "value": "application/json" },
+        { "key": "Referer", "value": "https://finance.sina.com.cn" }
+      ],
+      "showInternalHeaders": false,
+      "body": { "mode": "none" },
+      "script": { "script": null, "wordWrap": true, "isEnabled": false },
+      "authorization": { "mode": "inherit" },
+      "settings": {
+        "protocol": 0,
+        "proxy": { "type": "unset", "value": "" },
+        "maxRedirect": 10,
+        "autoSave": true,
+        "autoCookie": true,
+        "autoId": true,
+        "sslVerify": true,
+        "omitEqualSign": true,
+        "urlAutocomplete": true
+      }
+    },
+    {
+      "id": "0db42cf8-2d8a-4bf8-a62b-d81bd7debd26",
+      "type": "api",
+      "name": "[qt.gtimg.cn] GET /?q=",
+      "method": "GET",
+      "url": {
+        "base": "https://qt.gtimg.cn/",
+        "query": [{ "key": "q", "value": "sh600519" }]
+      },
+      "headers": [
+        { "key": "Accept", "value": "*/*" },
+        { "key": "Referer", "value": "https://gu.qq.com" }
+      ],
+      "showInternalHeaders": false,
+      "body": { "mode": "none" },
+      "script": { "script": null, "wordWrap": true, "isEnabled": false },
+      "authorization": { "mode": "inherit" },
+      "settings": {
+        "protocol": 0,
+        "proxy": { "type": "unset", "value": "" },
+        "maxRedirect": 10,
+        "autoSave": true,
+        "autoCookie": true,
+        "autoId": true,
+        "sslVerify": true,
+        "omitEqualSign": true,
+        "urlAutocomplete": true
+      }
+    },
+    {
+      "id": "cee9551c-c46a-4ecd-a18e-1e0d19cec06d",
+      "type": "api",
+      "name": "[qt.gtimg.cn] GET /?q=",
+      "method": "GET",
+      "url": {
+        "base": "https://qt.gtimg.cn/",
+        "query": [{ "key": "q", "value": "sh600519" }]
+      },
+      "headers": [
+        { "key": "Accept", "value": "*/*" },
+        { "key": "Referer", "value": "https://gu.qq.com" }
+      ],
+      "showInternalHeaders": false,
+      "body": { "mode": "none" },
+      "script": { "script": null, "wordWrap": true, "isEnabled": false },
+      "authorization": { "mode": "inherit" },
+      "settings": {
+        "protocol": 0,
+        "proxy": { "type": "unset", "value": "" },
+        "maxRedirect": 10,
+        "autoSave": true,
+        "autoCookie": true,
+        "autoId": true,
+        "sslVerify": true,
+        "omitEqualSign": true,
+        "urlAutocomplete": true
+      }
+    },
+    {
+      "id": "1f32ebfd-006f-42a5-80b0-cac1b3567aea",
+      "type": "api",
+      "name": "[search-api-web.eastmoney.com] GET /search/jsonp",
+      "method": "GET",
+      "url": {
+        "base": "https://search-api-web.eastmoney.com/search/jsonp",
+        "query": [
+          { "key": "cb", "value": "jQuery1123" },
+          {
+            "key": "param",
+            "value": "%7B%22keyword%22%3A%22600519%22%2C%22type%22%3A%5B%22cmsArticleWebOld%22%5D%2C%22client%22%3A%22web%22%2C%22clientType%22%3A%22web%22%2C%22clientVersion%22%3A%22curr%22%2C%22param%22%3A%7B%22cmsArticleWebOld%22%3A%7B%22searchScope%22%3A%22all%22%2C%22sort%22%3A%22time%22%2C%22pageIndex%22%3A1%2C%22pageSize%22%3A10%7D%7D%7D"
+          }
+        ]
+      },
+      "headers": [
+        { "key": "Accept", "value": "*/*" },
+        { "key": "Referer", "value": "https://search.eastmoney.com" }
+      ],
+      "showInternalHeaders": false,
+      "body": { "mode": "none" },
+      "script": { "script": null, "wordWrap": true, "isEnabled": false },
+      "authorization": { "mode": "inherit" },
+      "settings": {
+        "protocol": 0,
+        "proxy": { "type": "unset", "value": "" },
+        "maxRedirect": 10,
+        "autoSave": true,
+        "autoCookie": true,
+        "autoId": true,
+        "sslVerify": true,
+        "omitEqualSign": true,
+        "urlAutocomplete": true
+      }
+    },
+    {
+      "id": "1b1dc997-ab90-4057-a3b2-614969ac7a1e",
+      "type": "api",
+      "name": "[searchapi.eastmoney.com] GET /api/suggest/get",
+      "method": "GET",
+      "url": {
+        "base": "https://searchapi.eastmoney.com/api/suggest/get",
+        "query": [
+          { "key": "input", "value": "贵州茅台" },
+          { "key": "type", "value": "14" },
+          { "key": "token", "value": "D43BF722C8E33BDC906FB84D85E326E8" }
+        ]
+      },
+      "headers": [{ "key": "Accept", "value": "application/json" }],
+      "showInternalHeaders": false,
+      "body": { "mode": "none" },
+      "script": { "script": null, "wordWrap": true, "isEnabled": false },
+      "authorization": { "mode": "inherit" },
+      "settings": {
+        "protocol": 0,
+        "proxy": { "type": "unset", "value": "" },
+        "maxRedirect": 10,
+        "autoSave": true,
+        "autoCookie": true,
+        "autoId": true,
+        "sslVerify": true,
+        "omitEqualSign": true,
+        "urlAutocomplete": true
+      }
+    },
+    {
+      "id": "efed9f47-ff20-4c1f-afff-3ec4293a92ba",
+      "type": "api",
+      "name": "[stock.xueqiu.com] GET /v5/stock/realtime/quotec.json",
+      "method": "GET",
+      "url": {
+        "base": "https://stock.xueqiu.com/v5/stock/realtime/quotec.json",
+        "query": [{ "key": "symbol", "value": "SH600519" }]
+      },
+      "headers": [{ "key": "Accept", "value": "application/json" }],
+      "showInternalHeaders": false,
+      "body": { "mode": "none" },
+      "script": { "script": null, "wordWrap": true, "isEnabled": false },
+      "authorization": { "mode": "inherit" },
+      "settings": {
+        "protocol": 0,
+        "proxy": { "type": "unset", "value": "" },
+        "maxRedirect": 10,
+        "autoSave": true,
+        "autoCookie": true,
+        "autoId": true,
+        "sslVerify": true,
+        "omitEqualSign": true,
+        "urlAutocomplete": true
+      }
+    },
+    {
+      "id": "386e72c6-1daa-414a-a014-a1850b0dffd6",
+      "type": "api",
+      "name": "[webrelease.dzh.com.cn] GET /htmlweb/ztts/api.php - 连板天梯",
       "method": "GET",
       "url": {
         "base": "https://webrelease.dzh.com.cn/htmlweb/ztts/api.php",
@@ -30,6 +900,31 @@
       ],
       "showInternalHeaders": false,
       "body": { "mode": "none" },
+      "script": { "script": "", "wordWrap": true, "isEnabled": false },
+      "authorization": { "mode": "inherit" },
+      "settings": {
+        "protocol": 0,
+        "proxy": { "type": "unset", "value": "" },
+        "maxRedirect": 10,
+        "autoSave": true,
+        "autoCookie": true,
+        "autoId": true,
+        "sslVerify": true,
+        "omitEqualSign": true,
+        "urlAutocomplete": true
+      }
+    },
+    {
+      "id": "d28b483f-7fa5-49f4-82d0-303582688fe5",
+      "type": "api",
+      "name": "[xgpiao.net] GET /mystock/const/hisdata/sortdata/genes_buy.txt",
+      "method": "GET",
+      "url": {
+        "base": "http://xgpiao.net/mystock/const/hisdata/sortdata/genes_buy.txt"
+      },
+      "headers": [{ "key": "Accept", "value": "text/plain" }],
+      "showInternalHeaders": false,
+      "body": { "mode": "none" },
       "script": { "script": null, "wordWrap": true, "isEnabled": false },
       "authorization": { "mode": "inherit" },
       "settings": {
@@ -49,7 +944,7 @@
     "name": "stocktiny",
     "query": [],
     "headers": [],
-    "script": { "script": null, "wordWrap": true, "isEnabled": false },
+    "script": { "script": "", "wordWrap": true, "isEnabled": false },
     "authorization": { "mode": "none" }
   },
   "revision": -1
